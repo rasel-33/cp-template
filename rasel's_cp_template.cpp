@@ -1,49 +1,23 @@
-//#include<bits/stdc++.h>
-
-#include<algorithm>
-#include<cstdio>
-#include<sstream>
-#include<cstdlib>
-#include<cctype>
-#include<cmath>
-#include<set>
-#include<queue>
-#include<stack>
-#include<list>
-#include<iostream>
-#include<fstream>
-#include<numeric>
-#include<string>
-#include<vector>
-#include<cstring>
-#include<map>
-#include<iterator>
-#include<deque>
-#include<climits>
-#include<complex>
+#include<bits/stdc++.h>
 
 #define EPS          1E-9
 #define PI           acos(-1)
 #define SQR(n)       (n*n)
 using namespace std;
-#define M            1000000007
+#define M            998244353
 #define INF          (1<<30)-1+(1<<30)
-#define fast         ios::sync_with_stdio();cin.tie(0)
+#define fast         ios::sync_with_stdio();cin.tie(nullptr)
 #define all(v)       (v).begin(), (v).end()
 #define ll           long long
 #define f0(i, n)     for(int (i) = 0; i <  (n); i++)
 #define f1(i, n)     for(int (i) = 1; i <= (n); i++)
-#define fn0(i, n)    for(int (i) = (n)-1;(i)>=0;i--)
-#define fn1(i, n)    for(int (i) = (n);(i)>=1;i--)
 #define endl         "\n"
 #define pb           push_back
 #define UNIQUE(v)    (v).erase(unique(all(v)), (v).end())
 #define sz()         size()
-#define UB           upper_bound
-#define LB           lower_bound
 #define mxe(a,n)     (*max_element(a,a+n))
 #define mne(a,n)     (*min_element(a,a+n))
-#define countbit(x)  __builtin_popcount(x) 
+#define countbit(x)  __builtin_popcount(x)
 //moves
 int dx[] = { -1,+0,+1,+0,-1,-1,+1,+1};
 int dy[] = { +0,-1,+0,+1,+1,-1,+1,-1};
@@ -58,14 +32,38 @@ template <typename T> T     ModInv (T b,T m){return BigMod(b,m-2,m);}
 template <typename T> T     POW(T B,T P){ if(P==0) return 1; if(P&1) return B*POW(B,P-1);  else return SQR(POW(B,P/2));}
 template <typename T> T     Dis(T x1,T y1,T x2, T y2){return sqrt( SQR(x1-x2) + SQR(y1-y2) );}
 template <typename T> T     Angle(T x1,T y1,T x2, T y2){ return atan( double(y1-y2) / double(x1-x2));}
-template <typename T> T     DIFF(T a,T b) { T d = a-b;if(d<0)return -d;else return d;}
-template <typename T> T     gcd(T a,T b){if(a<0)return gcd(-a,b);if(b<0)return gcd(a,-b);return (b==0)?a:gcd(b,a%b);}
-template <typename T> T     lcm(T a,T b) {if(a<0)return lcm(-a,b);if(b<0)return lcm(a,-b);return a*(b/gcd(a,b));}
 template <typename T> void  yes(T a){if(a==1)printf("YES\n");else printf("Yes\n");}
 template <typename T> void  no(T a){if(a==1)printf("NO\n");else printf("No\n");}
+//file input
+void xxx(){
+    #ifdef LOCAL 
+    freopen("input.txt", "r", stdin);freopen("output.txt", "w",stdout);
+    #endif
+}
+
+
+string str, sa, sb;
+ll n, m, k, x, y, h, w, a,b,c;
+ll arr[1000006];
+
+
+
+void solve(int tc){
+    scanf("%lld", &n);
+    printf("%lld\n",n);
+    
+}
+
 
 
 int main(){
-	
-    cout << lcm(100, 12) << endl;
+    xxx();
+    int tc = 1, cas_no = 0;
+    scanf("%d", &tc);
+    while(tc--){cas_no++;
+        solve(cas_no);
+    }
+    return 0;
 }
+
+

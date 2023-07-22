@@ -19,6 +19,8 @@ using namespace std;
 #define mne(a,n)     (*min_element(a,a+n))
 #define countbit(x)  __builtin_popcount(x)
 //moves
+int kdx[8]={ 2, 1, -1, -2, -2, -1, 1, 2 };//knights move
+int kdy[8]={ 1, 2, 2, 1, -1, -2, -2, -1 };//knights move
 int dx[] = { -1,+0,+1,+0,-1,-1,+1,+1};
 int dy[] = { +0,-1,+0,+1,+1,-1,+1,-1};
 //bit

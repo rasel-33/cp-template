@@ -2,73 +2,62 @@
 using namespace std;
 
 #define ll long long
+#define MAXN   1001
 
 ll n, m, a, b, k, x, y, w, h, p, l, t, r;
 
-/* Kosaraju Algorithm for
-   finding strongly connected components
-*/
+vector<ll> adj[MAXN], adj_rev[MAXN];
+bool vis[MAXN];
 
-ll nodeCount, edgeCount;
-ll processing_time[1001];
-vector<ll> adj[1001];
-vector<ll> reversed[1001];
-vector<pair<ll, ll>> vt;
-bool visited[1001];
-ll current_time = 0;
+vector<ll> order, component;
 
-void dfs(ll node){ // this dfs find the outtime of a node
-	visited[node] = 1;
+void dfs1(ll node){
+	vis[node] = 1;
 	for(auto child:adj[node]){
-		if(!visited[child]){
-			current_time++;
-			dfs(child);
-
+		if(!vis[child]){
+			dfs1(child);
 		}
 	}
-	current_time++;
-	processing_time[node] = current_time; 
+	order.push_back(node);
 }
 
-void dfs2(ll node){// this dfs finds connected components on reversed edges
-	cout << node <<" ";
-	visited[node] = 1;
-	for(auto child:reversed[node]){
-		if(!visited[child]){
+void dfs2(ll node){
+	vis[node] = 1;
+	component.push_back(node);
+	for(auto child:adj_rev[node]){
+		if(!vis[child]){
 			dfs2(child);
 		}
 	}
 }
 
 
+
 void solve(){
 	bool ok = true, can = false;
 	ll tot = 0, mn = LLONG_MAX, mx = LLONG_MIN, q;
 	ll sum = 0, sum1 = 0;
-	
-	cin >> nodeCount >> edgeCount;
+	ll edgeCount;
+	cin >> n >> edgeCount;
+	for(int i=1;i<=n;i++) vis[i] = 0;
 	for(int i=0;i<edgeCount;i++){
 		cin >> a >> b;
 		adj[a].push_back(b);
-		reversed[b].push_back(a);
+		adj_rev[b].push_back(a);
 	}
-
-	for(int i=1;i<=nodeCount;i++){
-		if(!visited[i]){
-			current_time++;
-			dfs(i);
-		}
+	for(int i=1;i<=n;i++){
+		if(!vis[i]) dfs1(i);
 	}
-	for(int i=1;i<=nodeCount;i++){
-		vt.push_back({processing_time[i], i});
-	}
-	sort(vt.rbegin(), vt.rend());
-	for(int i=1;i<=nodeCount;i++){
-		visited[i]=0;
-	}
-	for(int i=0;i<nodeCount;i++){
-		if(!visited[vt[i].second]){
-			dfs2(vt[i].second);
+	for(int i=1;i<=n;i++) vis[i] = 0;
+	reverse(order.begin(), order.end());
+	
+	for(auto u:order){
+		if(!vis[u]){
+			component.clear();
+			dfs2(u);
+			for(auto f:component){
+				cout << f <<" ";
+			}
 			cout << endl;
 		}
 	}

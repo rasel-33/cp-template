@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
@@ -37,21 +37,30 @@ using namespace std;
 #define   ClearBit(x, k)  (x &= ~(1LL << k))
 #define   CheckBit(x, k)  ((x>>k)&1)
 #define Toggle_Bit(x, k)  (x ^= (1 << k))
+bool casprint= false;
+bool multiple= false;
 
 template<class T> using ordered_set =tree<T, null_type, less<T>, rb_tree_tag,tree_order_statistics_node_update> ;
-
+template<class T> using minheap = priority_queue<T, vector<T>, greater<T>>;
 //moves
 int kdx[8]={ 2, 1, -1, -2, -2, -1, 1, 2 };//knights move
 int kdy[8]={ 1, 2, 2, 1, -1, -2, -2, -1 };//knights move
 int dx[] = { -1,+0,+1,+0,-1,-1,+1,+1};
 int dy[] = { +0,-1,+0,+1,+1,-1,+1,-1};
+////////////  U  L  D  R
 
 template <typename T> T     MIN (T a,T b){return min(a, b);}
 template <typename T> T     MAX (T a,T b){return max(a, b);}
 
-
+// random function
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+ll my_rand(ll l, ll r)
+{
+    return uniform_int_distribution<ll>(l, r) (rng);
+}
 
 // predefined functions
+ll power(ll a, ll b){if(b==0) return 1;if(b&1) return a*power(a, b-1);ll ret = power(a, b/2);return ret*ret;}
 ll expo(ll a, ll b, ll m){if(b == 0) return 1ll;ll ret = expo(a, b/2, m);ret = (ret%m * ret%m)%m;if(b%2) ret = (ret*a)%m;return ret;}
 ll mminvprime(ll a, ll b) {return expo(a, b - 2, b);}
 ll mod_add(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a + b) % m) + m) % m;}
@@ -64,33 +73,31 @@ void printVector(vector<ll>&vt){int sz = vt.size();if(sz==0){cout << endl;return
 
 
 
+
 ll n, m, x, y, a, b, c, k;
 string s, sa, sb, str;
 
-    
 
 void solve(){
     bool ok = true, can = false;
     ll  sum = 0, mx = LLONG_MIN, mn = LLONG_MAX, tot=0, q;
     
+    
 }
 
 int main(){
     ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
     // cout << fixed << setprecision(10);
+    // multiple = 1;
+    // casprint = 1;
     int tc = 1, cas_no = 0;time_t start = clock();
-    // scanf("%d", &tc);
-
-    // cin >> tc;
-
-    while(tc--){++cas_no;
-    // printf("Case %d: ",cas_no);
-
-    solve();}
+    if(multiple){cin >> tc;}
+    while(tc--){++cas_no;if(casprint){cout <<"Case "<<cas_no<<": ";}solve();}
     
 #ifdef _DEBUG
-    printf("------- OUTPUT ENDS --------------\n");
-    printf("-------Elapsed time: %lld ms--------- ", (ll)(1000.0 * (double)(clock() - start) / CLOCKS_PER_SEC));
+    cerr << "Completed Successfully in " << (1000.0 * (double)(clock() - start) / CLOCKS_PER_SEC) << "ms---->  ";
 #endif
 return 0;
 }
